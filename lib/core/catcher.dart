@@ -54,6 +54,7 @@ class Catcher with ReportModeAction {
   final Map<DateTime, String> _reportsOcurrenceMap = {};
   LocalizationOptions? _localizationOptions;
   final int stackTraceLimit;
+  final Function? customParamsFunc;
 
   /// Instance of navigator key
   static GlobalKey<NavigatorState>? get navigatorKey {
@@ -70,6 +71,7 @@ class Catcher with ReportModeAction {
     this.enableLogger = true,
     this.ensureInitialized = false,
     this.stackTraceLimit = 50,
+    this.customParamsFunc,
     GlobalKey<NavigatorState>? navigatorKey,
   }) : assert(
           rootWidget != null || runAppFunction != null,
@@ -545,6 +547,7 @@ class Catcher with ReportModeAction {
       errorDetails,
       _getPlatformType(),
       screenshot,
+      customParamsFunc: customParamsFunc,
     );
 
     if (_isReportInReportsOccurencesMap(report)) {

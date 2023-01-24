@@ -32,18 +32,20 @@ class Report {
   /// (i.e. web platform), so this may be null.
   final File? screenshot;
 
+  final Function? customParamsFunc;
+
   /// Creates report instance
   Report(
-    this.error,
-    this.stackTrace,
-    this.dateTime,
-    this.deviceParameters,
-    this.applicationParameters,
-    this.customParameters,
-    this.errorDetails,
-    this.platformType,
-    this.screenshot,
-  );
+      this.error,
+      this.stackTrace,
+      this.dateTime,
+      this.deviceParameters,
+      this.applicationParameters,
+      this.customParameters,
+      this.errorDetails,
+      this.platformType,
+      this.screenshot,
+      {this.customParamsFunc});
 
   /// Creates json from current instance
   Map<String, dynamic> toJson({
@@ -58,6 +60,11 @@ class Report {
       "dateTime": dateTime.toIso8601String(),
       "platformType": describeEnum(platformType),
     };
+
+    if (customParamsFunc != null) {
+      customParameters.addAll(customParamsFunc!());
+    }
+
     if (enableDeviceParameters) {
       json["deviceParameters"] = deviceParameters;
     }
