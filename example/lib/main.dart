@@ -18,9 +18,6 @@ void main() {
         enableCustomParameters: true,
       )
     ],
-    customParamsFunc: () {
-      return {"hello": "world of apes"};
-    },
   );
 
   ///Configure your production options (settings used in release mode)
@@ -41,9 +38,6 @@ void main() {
         enableCustomParameters: true,
       ),
     ],
-    customParamsFunc: () {
-      return {"hello": "world war"};
-    },
   );
 
   ///Start Catcher and then start App. Now Catcher will guard and report any

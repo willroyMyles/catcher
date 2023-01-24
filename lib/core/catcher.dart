@@ -539,7 +539,7 @@ class Catcher with ReportModeAction {
 
     final Report report = Report(
       error,
-      Trace.from(stackTrace).terse,
+      stackTrace != null ? Trace.from(stackTrace).terse : stackTrace,
       DateTime.now(),
       _deviceParameters,
       _applicationParameters,

@@ -95,9 +95,18 @@ class SlackHandler extends ReportHandler {
       stringBuffer.write("```\n");
     }
 
-    if (enableCustomParameters && report.customParameters.isNotEmpty) {
+    Map<String, dynamic> params;
+    if (report.customParamsFunc != null) {
+      params = Map<String, dynamic>.from(report.customParamsFunc!());
+      params.addAll(report.customParameters);
+    } else {
+      params = <String, dynamic>{};
+      params.addAll(report.customParameters);
+    }
+
+    if (enableCustomParameters && params.isNotEmpty) {
       stringBuffer.write("*Custom parameters:* ```");
-      for (final entry in report.customParameters.entries) {
+      for (final entry in params.entries) {
         stringBuffer.write("${entry.key}: ${entry.value}\n");
       }
       stringBuffer.write("```\n");
