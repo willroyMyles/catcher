@@ -53,6 +53,7 @@ class Catcher with ReportModeAction {
   final List<Report> _cachedReports = [];
   final Map<DateTime, String> _reportsOcurrenceMap = {};
   LocalizationOptions? _localizationOptions;
+  final int stackTraceLimit;
 
   /// Instance of navigator key
   static GlobalKey<NavigatorState>? get navigatorKey {
@@ -68,6 +69,7 @@ class Catcher with ReportModeAction {
     this.profileConfig,
     this.enableLogger = true,
     this.ensureInitialized = false,
+    this.stackTraceLimit = 50,
     GlobalKey<NavigatorState>? navigatorKey,
   }) : assert(
           rootWidget != null || runAppFunction != null,
@@ -522,11 +524,20 @@ class Catcher with ReportModeAction {
       screenshot = await screenshotManager.captureAndSave();
     }
 
+    if (stackTrace != null) {
+      var str = stackTrace.toString();
+      var entries = str.split("\n");
+      entries = entries
+          .getRange(0, stackTraceLimit.clamp(0, entries.length - 1))
+          .toList();
+      var strr = entries.reduce((value, element) => value + element + "\n");
+      StackTrace s = StackTrace.fromString(strr);
+      stackTrace = s;
+    }
+
     final Report report = Report(
       error,
-      Trace.from(stackTrace).terse.foldFrames(
-            (p0) => !p0.isCore,
-          ),
+      Trace.from(stackTrace).terse,
       DateTime.now(),
       _deviceParameters,
       _applicationParameters,

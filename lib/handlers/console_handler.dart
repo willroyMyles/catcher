@@ -9,6 +9,7 @@ class ConsoleHandler extends ReportHandler {
   final bool enableStackTrace;
   final bool enableCustomParameters;
   final bool handleWhenRejected;
+  final int stackTraceLineLimit;
 
   ConsoleHandler({
     this.enableDeviceParameters = true,
@@ -16,6 +17,7 @@ class ConsoleHandler extends ReportHandler {
     this.enableStackTrace = true,
     this.enableCustomParameters = false,
     this.handleWhenRejected = false,
+    this.stackTraceLineLimit = 100,
   });
 
   @override

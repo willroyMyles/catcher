@@ -22,6 +22,7 @@ class SlackHandler extends ReportHandler {
   final bool enableStackTrace;
   final bool enableCustomParameters;
   final FutureOr<String> Function(Report report)? customMessageBuilder;
+  final int stackTraceLineLimit;
 
   SlackHandler(
     this.webhookUrl,
@@ -34,6 +35,7 @@ class SlackHandler extends ReportHandler {
     this.enableStackTrace = false,
     this.enableCustomParameters = false,
     this.customMessageBuilder,
+    this.stackTraceLineLimit = 100,
   });
 
   @override

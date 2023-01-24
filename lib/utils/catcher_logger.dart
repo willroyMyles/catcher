@@ -1,14 +1,8 @@
-import 'package:logger/logger.dart' as s;
 import 'package:logging/logging.dart';
 
 ///Class used to provide logger for Catcher.
 class CatcherLogger {
-  var _logger = s.Logger(
-      printer: s.PrettyPrinter(
-    methodCount: 3,
-    errorMethodCount: 5,
-    colors: true,
-  ));
+  final Logger _logger = Logger("Catcher");
 
   ///Setup logger configuration.
   void setup() {
@@ -24,22 +18,23 @@ class CatcherLogger {
   }
 
   ///Log info message.
+  ///Log info message.
   void info(String message) {
-    _logger.i(message);
+    _logger.info(message);
   }
 
   ///Log fine message.
   void fine(String message) {
-    _logger.v(message);
+    _logger.fine(message);
   }
 
   ///Log warning message.
   void warning(String message) {
-    _logger.w(message);
+    _logger.warning(message);
   }
 
   ///Log severe mesasge.
   void severe(String message) {
-    _logger.wtf(message);
+    _logger.severe(message);
   }
 }
