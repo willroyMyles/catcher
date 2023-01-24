@@ -54,26 +54,27 @@ class CatcherOptions {
   ///Logger instance.
   final CatcherLogger? logger;
 
+  final Function? customParamsFunc;
+
   /// Builds catcher options instance
-  CatcherOptions(
-    this.reportMode,
-    this.handlers, {
-    this.handlerTimeout = 5000,
-    this.customParameters = const <String, dynamic>{},
-    this.localizationOptions = const [],
-    this.explicitExceptionReportModesMap = const {},
-    this.explicitExceptionHandlersMap = const {},
-    this.handleSilentError = true,
-    this.screenshotsPath = "",
-    this.excludedParameters = const [],
-    this.filterFunction,
-    this.reportOccurrenceTimeout = 3000,
-    this.logger,
-  });
+  CatcherOptions(this.reportMode, this.handlers,
+      {this.handlerTimeout = 5000,
+      this.customParameters = const <String, dynamic>{},
+      this.localizationOptions = const [],
+      this.explicitExceptionReportModesMap = const {},
+      this.explicitExceptionHandlersMap = const {},
+      this.handleSilentError = true,
+      this.screenshotsPath = "",
+      this.excludedParameters = const [],
+      this.filterFunction,
+      this.reportOccurrenceTimeout = 3000,
+      this.logger,
+      this.customParamsFunc});
 
   /// Builds default catcher options release instance
   CatcherOptions.getDefaultReleaseOptions()
       : handlers = [ConsoleHandler()],
+        customParamsFunc = null,
         reportMode = DialogReportMode(),
         handlerTimeout = 5000,
         customParameters = <String, dynamic>{},
@@ -101,6 +102,7 @@ class CatcherOptions {
         excludedParameters = const [],
         filterFunction = null,
         reportOccurrenceTimeout = 3000,
+        customParamsFunc = null,
         logger = CatcherLogger();
 
   /// Builds default catcher options profile instance
@@ -115,6 +117,7 @@ class CatcherOptions {
         handleSilentError = true,
         screenshotsPath = "",
         excludedParameters = const [],
+        customParamsFunc = null,
         filterFunction = null,
         reportOccurrenceTimeout = 3000,
         logger = CatcherLogger();

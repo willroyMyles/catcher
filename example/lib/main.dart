@@ -9,13 +9,18 @@ void main() {
     DialogReportMode(),
     [
       ///Send logs to HTTP server
-      HttpHandler(HttpRequestType.post,
-          Uri.parse("https://jsonplaceholder.typicode.com/posts"),
-          printLogs: true),
+      // HttpHandler(HttpRequestType.post,
+      //     Uri.parse("https://jsonplaceholder.typicode.com/posts"),
+      //     printLogs: true),
 
       ///Print logs in console
-      ConsoleHandler()
+      ConsoleHandler(
+        enableCustomParameters: true,
+      )
     ],
+    customParamsFunc: () {
+      return {"hello": "world of apes"};
+    },
   );
 
   ///Configure your production options (settings used in release mode)
@@ -28,11 +33,17 @@ void main() {
         SentryClient(
           SentryOptions(dsn: "<DSN>"),
         ),
+        enableCustomParameters: true,
       ),
 
       ///Print logs in console
-      ConsoleHandler(),
+      ConsoleHandler(
+        enableCustomParameters: true,
+      ),
     ],
+    customParamsFunc: () {
+      return {"hello": "world war"};
+    },
   );
 
   ///Start Catcher and then start App. Now Catcher will guard and report any
@@ -43,6 +54,9 @@ void main() {
     },
     debugConfig: debugOptions,
     releaseConfig: releaseOptions,
+    customParamsFunc: () {
+      return {"hello": "world"};
+    },
   );
 }
 

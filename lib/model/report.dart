@@ -61,10 +61,6 @@ class Report {
       "platformType": describeEnum(platformType),
     };
 
-    if (customParamsFunc != null) {
-      customParameters.addAll(customParamsFunc!());
-    }
-
     if (enableDeviceParameters) {
       json["deviceParameters"] = deviceParameters;
     }
@@ -75,7 +71,9 @@ class Report {
       json["stackTrace"] = stackTrace.toString();
     }
     if (enableCustomParameters) {
-      json["customParameters"] = customParameters;
+      json["customParameters"] = customParamsFunc != null
+          ? customParamsFunc!().addAll(customParameters)
+          : customParameters;
     }
     return json;
   }

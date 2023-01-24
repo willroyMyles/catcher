@@ -4,16 +4,25 @@ import 'package:flutter/material.dart';
 void main() {
   CatcherOptions debugOptions = CatcherOptions(DialogReportMode(), [
     ConsoleHandler(),
-  ]);
+  ], customParameters: <String, dynamic>{
+    "hi": ""
+  });
   CatcherOptions releaseOptions = CatcherOptions(PageReportMode(), [
     EmailManualHandler(["recipient@email.com"])
-  ]);
+  ], customParameters: <String, dynamic>{
+    "hi": ""
+  });
 
   Catcher(
       runAppFunction: () {
         runApp(MyApp());
       },
       debugConfig: debugOptions,
+      customParamsFunc: () {
+        return {
+          "hello": "world",
+        };
+      },
       releaseConfig: releaseOptions);
 }
 

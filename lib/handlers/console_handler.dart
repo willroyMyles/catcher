@@ -42,7 +42,13 @@ class ConsoleHandler extends ReportHandler {
       _printStackTraceFormatted(report.stackTrace as StackTrace?);
     }
     if (enableCustomParameters) {
-      _printCustomParametersFormatted(report.customParameters);
+      if (report.customParamsFunc != null) {
+        Map<String, dynamic> params =
+            Map<String, dynamic>.from(report.customParamsFunc!());
+        params.addAll(report.customParameters);
+        _printCustomParametersFormatted(params);
+      } else
+        _printCustomParametersFormatted(report.customParameters);
     }
     logger.info(
       "======================================================================",
