@@ -18,6 +18,7 @@ import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:stack_trace/stack_trace.dart';
 
 class Catcher with ReportModeAction {
   static late Catcher _instance;
@@ -523,7 +524,7 @@ class Catcher with ReportModeAction {
 
     final Report report = Report(
       error,
-      stackTrace,
+      Trace.from(stackTrace).terse,
       DateTime.now(),
       _deviceParameters,
       _applicationParameters,
