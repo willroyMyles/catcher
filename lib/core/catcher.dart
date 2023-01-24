@@ -524,7 +524,9 @@ class Catcher with ReportModeAction {
 
     final Report report = Report(
       error,
-      Trace.from(stackTrace).terse,
+      Trace.from(stackTrace).terse.foldFrames(
+            (p0) => !p0.isCore,
+          ),
       DateTime.now(),
       _deviceParameters,
       _applicationParameters,

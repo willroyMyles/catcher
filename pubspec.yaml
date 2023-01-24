@@ -27,6 +27,7 @@ dependencies:
 
 dev_dependencies:
   lint: ^1.7.2
+  logger: ^1.1.0
   stack_trace: ^1.11.0
 
 flutter:

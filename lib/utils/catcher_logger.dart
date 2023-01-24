@@ -6,6 +6,8 @@ class CatcherLogger {
   var _logger = s.Logger(
       printer: s.PrettyPrinter(
     methodCount: 3,
+    errorMethodCount: 5,
+    colors: true,
   ));
 
   ///Setup logger configuration.
