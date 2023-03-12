@@ -533,9 +533,15 @@ class Catcher with ReportModeAction {
         entries = entries
             .getRange(0, stackTraceLimit.clamp(0, entries.length - 1))
             .toList();
-        var strr = entries.reduce((value, element) => value + element + "\n");
-        StackTrace s = StackTrace.fromString(strr);
-        stackTrace = s;
+        if (entries.isEmpty) {
+          // stackTrace = str;
+          StackTrace s = StackTrace.fromString(str);
+          stackTrace = s;
+        } else {
+          var strr = entries.reduce((value, element) => value + element + "\n");
+          StackTrace s = StackTrace.fromString(strr);
+          stackTrace = s;
+        }
       }
     }
 
