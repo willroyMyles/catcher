@@ -1,5 +1,11 @@
-## 1.3.0
-* Migrate Slack screenshot API calls to `files.*UploadExternal` (you now need to specify also a `channelId` in the `SlackHandler` for that!)
+## 2.0.0-alpha.0
+* [BREAKING_CHANGE] Migrate Slack screenshot API calls to `files.*UploadExternal` (you now need to specify also a `channelId` in the `SlackHandler` for that!)
+* [BREAKING_CHANGE] Migrate screenshots to `cross_file`'s `XFile`s
+* [BREAKING_CHANGE] Migrate away from Android `namespace` workaround (removes support for ancient AGP versions)
+* [BREAKING_CHANGE] Fix error catching on Web (was also improved thanks to [@mikeesouth](https://github.com/mikeesouth) in [#32](https://github.com/ThexXTURBOXx/catcher_2/pull/32))
+* Added more parameters to `SentryHandler` (Thanks to [@mikeesouth](https://github.com/mikeesouth) in [#32](https://github.com/ThexXTURBOXx/catcher_2/pull/32))
+* Better example structure
+* Update `flutter_lints` to `4.x`
 * Rebase on upstream
 
 ## 1.2.6
