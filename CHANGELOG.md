@@ -1,3 +1,6 @@
+## 2.0.0-alpha.1
+* Apply proper colours from App theme ([#31](https://github.com/ThexXTURBOXx/catcher_2/issues/31))
+
 ## 2.0.0-alpha.0
 * [BREAKING_CHANGE] Migrate Slack screenshot API calls to `files.*UploadExternal` (you now need to specify also a `channelId` in the `SlackHandler` for that!)
 * [BREAKING_CHANGE] Migrate screenshots to `cross_file`'s `XFile`s
