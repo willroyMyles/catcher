@@ -1,5 +1,6 @@
 ## 1.3.0
 * Migrate Slack screenshot API calls to `files.*UploadExternal` (you now need to specify also a `channelId` in the `SlackHandler` for that!)
+* Rebase on upstream
 
 ## 1.2.6
 * Allow `package_info_plus` versions `8.x`
