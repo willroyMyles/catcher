@@ -72,34 +72,36 @@ class PageWidgetState extends State<PageWidget> {
         },
         child: Builder(
           builder: (context) => Catcher2Utils.isCupertinoAppAncestor(context)
-              ? _buildCupertinoPage()
-              : _buildMaterialPage(),
+              ? _buildCupertinoPage(context)
+              : _buildMaterialPage(context),
         ),
       );
 
-  Widget _buildMaterialPage() => Scaffold(
+  Widget _buildMaterialPage(BuildContext context) => Scaffold(
         appBar: AppBar(
           title: Text(
             widget.pageReportMode.localizationOptions.pageReportModeTitle,
           ),
         ),
-        body: _buildInnerWidget(),
+        body: _buildInnerWidget(context),
       );
 
-  Widget _buildCupertinoPage() => CupertinoPageScaffold(
+  Widget _buildCupertinoPage(BuildContext context) => CupertinoPageScaffold(
         navigationBar: CupertinoNavigationBar(
           middle: Text(
             widget.pageReportMode.localizationOptions.pageReportModeTitle,
           ),
         ),
         child: SafeArea(
-          child: _buildInnerWidget(),
+          child: _buildInnerWidget(context),
         ),
       );
 
-  Widget _buildInnerWidget() => Container(
+  Widget _buildInnerWidget(BuildContext context) => Container(
         padding: const EdgeInsets.symmetric(vertical: 10),
-        decoration: const BoxDecoration(color: Colors.white),
+        decoration: BoxDecoration(
+          color: Theme.of(context).scaffoldBackgroundColor,
+        ),
         child: Column(
           children: [
             const Padding(

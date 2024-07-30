@@ -22,27 +22,31 @@ class Catcher2ErrorWidget extends StatelessWidget {
   Widget build(BuildContext context) => LayoutBuilder(
         builder: (context, constraint) =>
             constraint.maxWidth < maxWidthForSmallMode
-                ? _buildSmallErrorWidget()
-                : _buildNormalErrorWidget(),
+                ? _buildSmallErrorWidget(context)
+                : _buildNormalErrorWidget(context),
       );
 
-  Widget _buildSmallErrorWidget() => const Center(
+  Widget _buildSmallErrorWidget(BuildContext context) => Center(
         child: Icon(
           Icons.error_outline,
-          color: Colors.red,
+          color: Theme.of(context).colorScheme.error,
           size: 40,
         ),
       );
 
-  Widget _buildNormalErrorWidget() => Container(
+  Widget _buildNormalErrorWidget(BuildContext context) => Container(
         margin: const EdgeInsets.all(20),
         child: Center(
           child: ListView(
             children: [
-              _buildIcon(),
+              _buildIcon(context),
               Text(
                 title,
-                style: const TextStyle(color: Colors.black, fontSize: 25),
+                style: Theme.of(context)
+                        .textTheme
+                        .titleMedium
+                        ?.copyWith(fontSize: 25) ??
+                    const TextStyle(fontSize: 25),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 10),
@@ -57,9 +61,9 @@ class Catcher2ErrorWidget extends StatelessWidget {
         ),
       );
 
-  Widget _buildIcon() => const Icon(
+  Widget _buildIcon(BuildContext context) => Icon(
         Icons.announcement,
-        color: Colors.red,
+        color: Theme.of(context).colorScheme.error,
         size: 40,
       );
 
