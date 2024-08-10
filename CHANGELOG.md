@@ -1,3 +1,7 @@
+## 2.0.0-alpha.2
+* Fix analyser issues for Flutter `3.24.0`
+* Update `fluttertoast` requirement to `8.2.6`
+
 ## 2.0.0-alpha.1
 * Apply proper colours from App theme ([#31](https://github.com/ThexXTURBOXx/catcher_2/issues/31))
 
