@@ -44,8 +44,11 @@ class ToastHandler extends ReportHandler {
       Future.delayed(
         const Duration(milliseconds: 500),
         () {
+          if (context == null || !context.mounted) {
+            return;
+          }
           Navigator.push<void>(
-            context!,
+            context,
             PageRouteBuilder(
               opaque: false,
               pageBuilder: (_, __, ___) => FlutterToastPage(

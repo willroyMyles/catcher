@@ -91,7 +91,7 @@ class Catcher2ScreenshotManager {
           final boundary = findRenderObject as RenderRepaintBoundary;
           final context = _containerKey.currentContext;
           var pixelRatioValue = pixelRatio;
-          if (pixelRatioValue == null && context != null) {
+          if (pixelRatioValue == null && context != null && context.mounted) {
             pixelRatioValue = MediaQuery.of(context).devicePixelRatio;
           }
           return await boundary.toImage(pixelRatio: pixelRatioValue ?? 1);
