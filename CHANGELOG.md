@@ -1,3 +1,7 @@
+## 2.0.0
+* Bump to next stable version
+* Improve logging ([#37](https://github.com/ThexXTURBOXx/catcher_2/issues/37))
+
 ## 2.0.0-alpha.2
 * Fix analyser issues for Flutter `3.24.0`
 * Update `fluttertoast` requirement to `8.2.6`
