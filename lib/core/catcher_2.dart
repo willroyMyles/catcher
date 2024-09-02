@@ -663,17 +663,17 @@ class Catcher2 implements ReportModeAction {
       _logger.warning('Error occurred in $reportHandler: $handlerError');
       return true; // Shut up warnings
     }).then((result) {
-      _logger.info('${report.runtimeType} result: $result');
-      if (!result) {
-        _logger.warning('$reportHandler failed to report error');
-      } else {
+      if (result) {
+        _logger.info('$reportHandler successfully reported an error');
         _cachedReports.remove(report);
+      } else {
+        _logger.warning('$reportHandler failed to report an error');
       }
     }).timeout(
       Duration(milliseconds: _currentConfig.handlerTimeout),
       onTimeout: () {
         _logger.warning(
-          '$reportHandler failed to report error because of timeout',
+          '$reportHandler failed to report an error because of timeout',
         );
       },
     );

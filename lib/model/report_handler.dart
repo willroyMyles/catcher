@@ -31,4 +31,8 @@ abstract class ReportHandler {
 
   /// Check whether report mode should auto confirm without user confirmation.
   bool shouldHandleWhenRejected() => false;
+
+  /// Can be overridden to provide more information about this handler.
+  @override
+  String toString() => runtimeType.toString();
 }
