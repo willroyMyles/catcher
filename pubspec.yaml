@@ -31,7 +31,7 @@ environment:
 
 dependencies:
   cross_file: ^0.3.0
-  device_info_plus: '>=9.0.0 <11.0.0'
+  device_info_plus: '>=9.0.0 <12.0.0'
   dio: ^5.0.1
   flutter:
     sdk: flutter
@@ -44,7 +44,7 @@ dependencies:
   universal_io: ^2.0.4
 
 dev_dependencies:
-  flutter_lints: ^4.0.0
+  flutter_lints: ^5.0.0
 
 platforms:
   android:
