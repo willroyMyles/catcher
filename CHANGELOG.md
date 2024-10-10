@@ -1,3 +1,7 @@
+## 2.0.1
+* Allow `device_info_plus` versions `11.x`
+* Fix example on Android (build with JDK 21 failed)
+
 ## 2.0.0
 * Bump to next stable version
 * Improve logging ([#37](https://github.com/ThexXTURBOXx/catcher_2/issues/37))
