@@ -1,7 +1,3 @@
-/// Library for error catching which provides multiple handlers for dealing with
-/// errors when they are not caught by the developer.
-library catcher_2;
-
 export 'package:catcher_2/core/catcher_2.dart';
 export 'package:catcher_2/core/catcher_2_screenshot.dart';
 export 'package:catcher_2/handlers/console_handler.dart';

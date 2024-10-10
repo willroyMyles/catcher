@@ -1,6 +1,3 @@
-/// Sub-library of Catcher 2 providing a way to handle screenshots.
-library screenshot;
-
 import 'dart:async';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
