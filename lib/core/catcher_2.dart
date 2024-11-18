@@ -81,6 +81,7 @@ class Catcher2 implements ReportModeAction {
     _instance = this;
     _configureNavigatorKey(navigatorKey);
     _setupCurrentConfig();
+    _setupLogger();
     _configureLogger();
     _setupReportModeActionInReportMode();
     _setupScreenshotManager();
@@ -249,12 +250,14 @@ class Catcher2 implements ReportModeAction {
     }
   }
 
-  void _configureLogger() {
+  void _setupLogger() {
     _logger = _currentConfig.logger ?? Catcher2Logger();
     if (enableLogger) {
       _logger.setup();
     }
+  }
 
+  void _configureLogger() {
     for (final handler in _currentConfig.handlers) {
       handler.logger = _logger;
     }
