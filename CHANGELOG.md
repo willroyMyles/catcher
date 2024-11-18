@@ -1,3 +1,6 @@
+## 2.0.2
+* Fix logger after `updateConfig` ([#39](https://github.com/ThexXTURBOXx/catcher_2/issues/39))
+
 ## 2.0.1
 * Allow `device_info_plus` versions `11.x`
 * Fix example on Android (build with JDK 21 failed)
