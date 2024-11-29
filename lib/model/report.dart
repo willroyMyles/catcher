@@ -41,7 +41,7 @@ class Report {
   final PlatformType platformType;
 
   /// Screenshot of screen where error happens. Screenshot won't work everywhere
-  /// (i.e. web platform), so this may be null.
+  /// (i.e. web platform), so this may be `null`
   final XFile? screenshot;
 
   /// Creates json from current instance

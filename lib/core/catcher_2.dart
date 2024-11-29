@@ -509,18 +509,23 @@ class Catcher2 implements ReportModeAction {
 
   /// Report checked error (error caught in try-catch block). Catcher 2 will
   /// treat this as normal exception and pass it to handlers.
-  static void reportCheckedError(error, stackTrace) {
+  static void reportCheckedError(
+    error,
+    stackTrace, {
+    Map<String, dynamic>? extraData,
+  }) {
     dynamic errorValue = error;
     dynamic stackTraceValue = stackTrace;
     errorValue ??= 'undefined error';
     stackTraceValue ??= StackTrace.current;
-    _instance._reportError(error, stackTrace);
+    _instance._reportError(errorValue, stackTraceValue, extraData: extraData);
   }
 
   Future<void> _reportError(
     error,
     stackTrace, {
     FlutterErrorDetails? errorDetails,
+    Map<String, dynamic>? extraData,
   }) async {
     if ((errorDetails?.silent ?? false) && !_currentConfig.handleSilentError) {
       _logger.info(
@@ -549,7 +554,7 @@ class Catcher2 implements ReportModeAction {
       DateTime.now(),
       _deviceParameters,
       _applicationParameters,
-      _currentConfig.customParameters,
+      {..._currentConfig.customParameters, ...(extraData ?? {})},
       errorDetails,
       _getPlatformType(),
       screenshot,
