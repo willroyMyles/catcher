@@ -1,3 +1,6 @@
+## 2.1.0
+* Add `extraData` parameter to `reportCheckedError` ([#40](https://github.com/ThexXTURBOXx/catcher_2/issues/40))
+
 ## 2.0.2
 * Fix logger after `updateConfig` ([#39](https://github.com/ThexXTURBOXx/catcher_2/issues/39))
 
